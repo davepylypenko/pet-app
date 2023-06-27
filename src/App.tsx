@@ -1,9 +1,9 @@
 import React from "react";
+import Tweet from "./components/Tweet";
+import { Tweets } from "./components/Tweets";
 
 export default function App() {
   return (
-    <div>
-      <h1>Pet</h1>
-    </div>
+    <Tweets />
   );
 }

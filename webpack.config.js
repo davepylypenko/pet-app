@@ -13,6 +13,7 @@ module.exports = {
     }),
   ],
   devServer: {
+    port: "3001",
     static: {
       directory: path.join(__dirname, "build"),
     },
@@ -27,6 +28,6 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
+    extensions: [".*", ".js", ".jsx", ".ts", ".tsx"],
   }
 };
