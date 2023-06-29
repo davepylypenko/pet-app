@@ -1,14 +1,10 @@
 import React from "react";
 import { Container, List, ListItem, makeStyles } from "@mui/material";
-import { getTweets } from "../api/getTweets";
 import Tweet from "./Tweet";
-
-const listItemClasses = {
-  minWidth: "500px"
-}
+import { useSelector } from "react-redux";
 
 export function Tweets() {
-  const tweets = getTweets();
+  const tweets = useSelector(({ tweets }) => tweets.value);
 
   return (
     <Container>

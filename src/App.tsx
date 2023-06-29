@@ -1,9 +1,13 @@
 import React from "react";
-import Tweet from "./components/Tweet";
 import { Tweets } from "./components/Tweets";
+import Header from "./components/Header";
+import CreateTweet from "./components/CreateTweet";
 
 export default function App() {
   return (
-    <Tweets />
+    <Header>
+      <CreateTweet />
+      <Tweets />
+    </Header>
   );
 }
