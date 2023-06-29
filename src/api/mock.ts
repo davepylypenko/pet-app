@@ -11,8 +11,8 @@ const defaultComment = {
   }
 };
 
-const defaultTweet = {
-  id: 9135090912834,
+export const defaultTweet = {
+  id: 1,
   creator: defaultUser,
   data: {
     text: 'any text for twitter',
@@ -25,19 +25,22 @@ const defaultTweet = {
   }
 };
 
+export const newTweet = {
+  id: 2,
+  creator: defaultUser,
+  data: {
+    text: 'create new tweet',
+    comments: [defaultComment],
+    likes: [
+      {
+        user: defaultUser,
+      }
+    ]
+  }
+};
+
 export const data = {
   tweets: [
-    defaultTweet,
-    defaultTweet,
-    defaultTweet,
-    defaultTweet,
-    defaultTweet,
-    defaultTweet,
-    defaultTweet,
-    defaultTweet,
-    defaultTweet,
-    defaultTweet,
-    defaultTweet,
     defaultTweet,
   ],
 };
