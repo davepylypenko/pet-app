@@ -1,5 +1,7 @@
-import React from 'react';
-import { Avatar, Typography, Paper } from '@mui/material';
+import React, { useState } from 'react';
+import { Avatar, Typography, Paper, Box, IconButton, Popover } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import TweetContextMenu from './TweetContextMenu';
 
 const tweetStyles = {
   root: {
@@ -11,20 +13,56 @@ const tweetStyles = {
   },
   avatar: {
     marginRight: 8,
+    color: '#64748B'
   },
   content: {
     flexGrow: 1,
   },
+  menuIcon: {
+    color: 'white'
+  },
 };
 
-const Tweet = ({ user, content }) => {
+const Tweet = ({ user, content }: any) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const { name, avatar } = user;
+
+  const handleClickMenu = (e) => {
+    setAnchorEl(e.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const isOpen = Boolean(anchorEl);
+
   return (
-    <Paper style={tweetStyles.root} elevation={3}>
-      <Avatar alt={user.name} src={user.avatar} style={tweetStyles.avatar} />
-      <div style={tweetStyles.content}>
-        <Typography variant="subtitle1">{user.name}</Typography>
+    <Paper style={tweetStyles.root} elevation={3} sx={{ bgcolor: '#0288d1', color: 'white' }}>
+      <Avatar alt={name} src={avatar} style={tweetStyles.avatar} sx={{ bgcolor: 'white' }}/>
+      <Box style={tweetStyles.content}>
+        <Typography variant="subtitle2">{name}</Typography>
         <Typography variant="body1">{content}</Typography>
-      </div>
+      </Box>
+      <Box>
+        <IconButton onClick={handleClickMenu}>
+          <MenuIcon style={tweetStyles.menuIcon}/>
+        </IconButton>
+        <Popover
+          open={isOpen}
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            horizontal: 'right',
+            vertical: 'top',
+          }}
+          transformOrigin={{
+            horizontal: 'left',
+            vertical: 'top',
+          }}
+          onClose={handleClose}
+        >
+          <TweetContextMenu />
+        </Popover>
+      </Box>
     </Paper>
   );
 };

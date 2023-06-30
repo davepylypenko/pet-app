@@ -1,5 +1,5 @@
 import { Box, IconButton, Paper, TextField, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SendIcon from '@mui/icons-material/Send';
 import CloseIcon from '@mui/icons-material/Close';
@@ -7,7 +7,7 @@ import { hide } from "../features/addNewTweet/reducer";
 import { newTweet } from "../api/mock";
 import { setTweets } from "../app/tweets";
 
-function CreateTweet() {
+function CreateTweetForm() {
   const addNewTweet = useSelector(({ addNewTweet }) => addNewTweet.value)
   const tweets = useSelector(({ tweets }) => tweets.value)
   const dispatch = useDispatch()
@@ -41,11 +41,12 @@ function CreateTweet() {
   return (
     <Box display="flex" justifyContent="center" marginBottom={5}>
       <Paper sx={{minWidth: '500px'}}>
-        <Box alignItems="center">
-          <Box display="flex" alignItems="center">
-            <Typography variant="body1" sx={{ flexGrow: 1, marginLeft: 1 }}>Create Tweet</Typography>
-            <IconButton onClick={handleClose}>
-              <CloseIcon fontSize="small"/>
+        <Box display="flex" alignItems="center">
+          <Typography variant="body1" sx={{ flexGrow: 1, marginLeft: 1 }}>
+            Create Tweet
+          </Typography>
+          <IconButton onClick={handleClose}>
+            <CloseIcon fontSize="small" />
           </IconButton>
           </Box>
           <Box flexGrow={1} textAlign="center" display="flex">
@@ -57,14 +58,13 @@ function CreateTweet() {
               variant="standard"
               sx={{ minWidth: 500, margin: 1 }}
             />
-          <IconButton onClick={handleCreateTweet}>
-            <SendIcon fontSize="small" />
+          <IconButton disabled={!Boolean(tweetText)} onClick={handleCreateTweet}>
+            <SendIcon fontSize="small" color="primary" />
           </IconButton>
-          </Box>
         </Box>
       </Paper>
     </Box>
   );
 };
 
-export default CreateTweet;
+export default CreateTweetForm;

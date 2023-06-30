@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { data } from "../api/mock";
+import { createSlice } from '@reduxjs/toolkit';
+import { data } from '../api/mock';
 
 export const tweets = createSlice({
   name: 'tweets',
@@ -8,14 +8,11 @@ export const tweets = createSlice({
   },
   reducers: {
     setTweets: (state, action) => {
-      state.value = [action.payload, ...state.value]
+      state.value = [action.payload, ...state.value];
     },
-    clear: ({ value }) => {
-      value = []
-    }
   }
-})
+});
 
-export const { setTweets, clear } = tweets.actions
+export const { setTweets } = tweets.actions;
 
-export default tweets.reducer
+export default tweets.reducer;
