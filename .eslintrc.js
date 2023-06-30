@@ -18,6 +18,7 @@ module.exports = {
     'react'
   ],
   rules: {
+    "eol-last": ["error", "always"],
     'indent': ['error', 2],
     'semi': 'error',
     'arrow-body-style': 0,
