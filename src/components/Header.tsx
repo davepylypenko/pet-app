@@ -1,7 +1,7 @@
 import { Avatar, Box, Button, Container, Divider, Typography } from '@mui/material';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { show } from '../features/addNewTweet/reducer';
+import { show } from '../features/createTweetVisible/reducer';
 
 type HeaderProps = {
   children: React.ReactNode

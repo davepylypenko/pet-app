@@ -11,7 +11,7 @@ export function Tweets() {
       <List>
         {tweets && tweets.map((tweet) => 
           <ListItem key={tweet.id} style={{ justifyContent: 'center' }} >
-            <Tweet user={tweet.creator} content={tweet.data.text}/>
+            <Tweet user={tweet.creator} tweet={tweet}/>
           </ListItem>
         )}
       </List>

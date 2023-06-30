@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const addNewTweet = createSlice({
-  name: 'addNewTweet',
+export const createTweetVisible = createSlice({
+  name: 'createTweetVisible',
   initialState: {
     value: false
   },
@@ -11,5 +11,5 @@ export const addNewTweet = createSlice({
   }
 });
 
-export const { show, hide } = addNewTweet.actions;
-export default addNewTweet.reducer;
+export const { show, hide } = createTweetVisible.actions;
+export default createTweetVisible.reducer;

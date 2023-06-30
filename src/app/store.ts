@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import addNewTweetReducer from '../features/addNewTweet/reducer';
+import createTweetVisible from '../features/createTweetVisible/reducer';
 import tweetsReducer from './tweets';
 
 export default configureStore({
   reducer: {
-    addNewTweet: addNewTweetReducer,
+    createTweetVisible: createTweetVisible,
     tweets: tweetsReducer,
   },
 });

@@ -23,9 +23,12 @@ const tweetStyles = {
   },
 };
 
-const Tweet = ({ user, content }: any) => {
+const Tweet = ({ user, tweet }: any) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const { name, avatar } = user;
+  const { data: {
+    text
+  }} = tweet;
 
   const handleClickMenu = (e) => {
     setAnchorEl(e.currentTarget);
@@ -41,7 +44,7 @@ const Tweet = ({ user, content }: any) => {
       <Avatar alt={name} src={avatar} style={tweetStyles.avatar} sx={{ bgcolor: 'white' }}/>
       <Box style={tweetStyles.content}>
         <Typography variant="subtitle2">{name}</Typography>
-        <Typography variant="body1">{content}</Typography>
+        <Typography variant="body1">{text}</Typography>
       </Box>
       <Box>
         <IconButton onClick={handleClickMenu}>
@@ -60,7 +63,7 @@ const Tweet = ({ user, content }: any) => {
           }}
           onClose={handleClose}
         >
-          <TweetContextMenu />
+          <TweetContextMenu tweet={tweet} />
         </Popover>
       </Box>
     </Paper>

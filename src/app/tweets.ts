@@ -7,12 +7,15 @@ export const tweets = createSlice({
     value: data.tweets,
   },
   reducers: {
-    setTweets: (state, action) => {
+    setTweet: (state, action) => {
       state.value = [action.payload, ...state.value];
+    },
+    deleteTweet: (state, action) => {
+      state.value = state.value.filter(({ id }) => id !== action.payload);
     },
   }
 });
 
-export const { setTweets } = tweets.actions;
+export const { setTweet, deleteTweet } = tweets.actions;
 
 export default tweets.reducer;

@@ -1,12 +1,14 @@
 import React from "react";
 import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useDispatch } from "react-redux";
+import { deleteTweet } from "../app/tweets";
 
 
-function TweetContextMenu() {
+function TweetContextMenu({ tweet }: any) {
+  const dispatch = useDispatch();
   const handleDeleteTweet = () => {
-    // eslint-disable-next-line no-console
-    console.log('tweet was deleted');
+    dispatch(deleteTweet(tweet.id));
   };
 
   return (
