@@ -4813,11 +4813,6 @@ tsutils@^3.21.0:
   dependencies:
     tslib "^1.8.1"
 
-twitter-api-v2@^1.15.0:
-  version "1.15.0"
-  resolved "https://registry.npmjs.org/twitter-api-v2/-/twitter-api-v2-1.15.0.tgz"
-  integrity sha512-Cqg3pIGhSwPyFBndpBrucdeNXecNFnYcXy3ixQ4brJHd/3k1CAtBVcX0e3s6jRYl/QIx5BmyGXS/SHEGtYZ3gw==
-
 type-check@^0.4.0, type-check@~0.4.0:
   version "0.4.0"
   resolved "https://registry.npmjs.org/type-check/-/type-check-0.4.0.tgz"

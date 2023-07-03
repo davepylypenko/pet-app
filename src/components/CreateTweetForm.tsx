@@ -46,6 +46,12 @@ function CreateTweetForm() {
     dispatch(setTweet(addNewTweet));
   };
 
+  const handleKeyEnter = (event: KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      handleCreateTweet();
+    }
+  };
+
   return (
     <Box display="flex" justifyContent="center" marginBottom={5}>
       <Paper sx={{minWidth: '500px'}}>
@@ -65,6 +71,7 @@ function CreateTweetForm() {
             variant="standard"
             sx={{ minWidth: 500, margin: 1 }}
             onChange={handleChange}
+            onKeyDown={handleKeyEnter}
           />
           <IconButton disabled={disabled} onClick={handleCreateTweet}>
             <SendIcon fontSize="small" color={disabled ? "disabled" : "primary"} />
