@@ -17,6 +17,7 @@ const tweetStyles = {
   },
   content: {
     flexGrow: 1,
+    maxWidth: 500,
   },
   menuIcon: {
     color: 'white'
@@ -44,7 +45,7 @@ const Tweet = ({ user, tweet }: any) => {
       <Avatar alt={name} src={avatar} style={tweetStyles.avatar} sx={{ bgcolor: 'white' }}/>
       <Box style={tweetStyles.content}>
         <Typography variant="subtitle2">{name}</Typography>
-        <Typography variant="body1">{text}</Typography>
+        <Typography style={{ wordBreak: 'break-word' }} variant="body1">{text}</Typography>
       </Box>
       <Box>
         <IconButton onClick={handleClickMenu}>
