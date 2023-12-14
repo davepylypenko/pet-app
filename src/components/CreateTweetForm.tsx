@@ -3,23 +3,23 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SendIcon from '@mui/icons-material/Send';
 import CloseIcon from '@mui/icons-material/Close';
-import { hide, show } from "../features/createTweetVisible/reducer";
-import { newTweet } from "../api/mock";
-import { setTweet } from "../app/tweets";
+import { hide } from "../features/createTweetVisible/reducer";
+import { addTweet } from "../app/tweets";
+import { addNewTweet } from "../api/requests/addNewTweet";
 
 function CreateTweetForm() {
   const visible = useSelector(({ createTweetVisible }) => createTweetVisible.value);
   const tweets = useSelector(({ tweets }) => tweets.value);
   const dispatch = useDispatch();
   const [tweetText, setTweetText] = useState('');
-  const disabled = !tweetText;
+  const disabled = !tweetText.trimStart();
   const hasTweets = Boolean(tweets.length);
 
   useEffect(() => {
 
-    if (!hasTweets) {
-      dispatch(show());
-    }
+    // if (!hasTweets) {
+    //   dispatch(show());
+    // }
   }, [tweets]);
 
   if (!visible) {
@@ -37,13 +37,18 @@ function CreateTweetForm() {
     setTweetText(value);
   };
 
-  const handleCreateTweet = () => {
-    const newId = tweets[0]?.id + 1 || 1;
-    const newData = { ...newTweet.data, text: tweetText};
-    const addNewTweet = { ...newTweet, id: newId, data: newData};
+  const handleCreateTweet = async () => {
 
+    const tweet = {
+      title: '',
+      body: tweetText,
+      userId: 1,
+    };
+  
+    console.log(tweetText, addNewTweet);
     setTweetText('');
-    dispatch(setTweet(addNewTweet));
+    const newTweet = await addNewTweet(tweet);
+    dispatch(addTweet(newTweet));
   };
 
   const handleKeyEnter = (event: KeyboardEvent) => {
