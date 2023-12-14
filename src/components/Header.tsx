@@ -1,20 +1,23 @@
-import { Avatar, Box, Button, Container, Divider, Typography } from "@mui/material";
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { show } from "../features/addNewTweet/reducer";
+import { Avatar, Box, Button, Container, Divider, Typography } from '@mui/material';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { show } from '../features/createTweetVisible/reducer';
 
-function Header({children}) {
-  const addNewTweet = useSelector(({ addNewTweet }) => addNewTweet.value)
+type HeaderProps = {
+  children: React.ReactNode
+}
+
+function Header({ children }: HeaderProps) {
   const dispatch = useDispatch();
-  const handleAddNewTweet = () => dispatch(show())
+  const handleAddNewTweet = () => dispatch(show());
 
   return (
     <>
-      <Box position="fixed" top={0} left={0} width="100%" bgcolor="white" padding={2} zIndex={9999}>
+      <Box position="fixed" top={0} left={0} width="100%" bgcolor="white" padding={2} zIndex={9999} sx={{ bgcolor: '#e3f2fd' }}>
         <Container>
           <Box display="flex" alignItems="center" justifyContent="space-between">
             <Box display="flex" alignItems="center">
-              <Avatar alt="User Avatar" src="/path/to/avatar.png" />
+              <Avatar alt="User Avatar" src="/path/to/avatar.png" sx={{ bgcolor: '#0288d1' }}/>
               <Box ml={2}>
                 <Typography variant="h3">Twitter Clone</Typography>
               </Box>
@@ -29,6 +32,6 @@ function Header({children}) {
       </Box>
     </>
   );
-};
+}
 
 export default Header;

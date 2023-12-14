@@ -2,7 +2,7 @@ const defaultUser = {
   id: 1,
   name: 'user name',
   // avatar: 'url',
-}
+};
 
 const defaultComment = {
   creator: defaultUser,

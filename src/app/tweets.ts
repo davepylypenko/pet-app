@@ -1,21 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { data } from "../api/mock";
+import { createSlice } from '@reduxjs/toolkit';
 
 export const tweets = createSlice({
   name: 'tweets',
   initialState: {
-    value: data.tweets,
+    value: [],
   },
   reducers: {
     setTweets: (state, action) => {
-      state.value = [action.payload, ...state.value]
+      state.value = action.payload;
     },
-    clear: ({ value }) => {
-      value = []
-    }
+    addTweet: (state, action) => {
+      state.value = [action.payload, ...state.value];
+    },
+    deleteTweet: (state, action) => {
+      state.value = state.value.filter(({ id }) => id !== action.payload);
+    },
   }
-})
+});
 
-export const { setTweets, clear } = tweets.actions
+export const { setTweets, addTweet, deleteTweet } = tweets.actions;
 
-export default tweets.reducer
+export default tweets.reducer;
